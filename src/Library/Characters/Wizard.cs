@@ -2,8 +2,6 @@ namespace RoleplayGame
 {
     public class Wizard: Character, Wielder<SpellsBook>, Wielder<Staff>
     {
-        private int health = 100;
-
         public Wizard(string name): base(name) {}
 
         public override Item[] Items { get => new Item[] { this.SpellsBook, this.Staff }; }

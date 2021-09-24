@@ -24,7 +24,7 @@ namespace RoleplayGame
         /// </summary>
         public string Name;
 
-        private int _health;
+        private int _health = 100;
 
         /// <summary>
         /// The character's health.
@@ -38,12 +38,12 @@ namespace RoleplayGame
         /// <summary>
         /// The attack value of the character.
         /// </summary>
-        public int AttackValue { get => Items.Aggregate(0, (total, el) => total + el.AttackValue); }
+        public int AttackValue { get => Items.Aggregate(0, (total, el) => total + (el?.AttackValue ?? 0)); }
 
         /// <summary>
         /// The defense value of the character.
         /// </summary>
-        public int DefenseValue { get => Items.Aggregate(0, (total, el) => total + el.DefenseValue); }
+        public int DefenseValue { get => Items.Aggregate(0, (total, el) => total + (el?.DefenseValue ?? 0)); }
 
         /// <summary>
         /// Receives an attack from an oponent.
