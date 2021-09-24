@@ -8,6 +8,11 @@ namespace RoleplayGame
     /// </summary>
     public abstract class Character
     {
+        public Character(string name)
+        {
+            this.Name = name;
+        }
+
         /// <summary>
         /// The list of items the character possesses.
         /// Its main purpose is to facilitate calculation of the total attack and defense values.

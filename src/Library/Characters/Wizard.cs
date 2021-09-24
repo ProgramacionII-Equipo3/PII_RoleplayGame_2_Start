@@ -4,10 +4,7 @@ namespace RoleplayGame
     {
         private int health = 100;
 
-        public Wizard(string name)
-        {
-            this.Name = name;
-        }
+        public Wizard(string name): base(name) {}
 
         public override Item[] Items { get => new Item[] { this.SpellsBook, this.Staff }; }
 

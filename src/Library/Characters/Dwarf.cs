@@ -2,10 +2,7 @@ namespace RoleplayGame
 {
     public class Dwarf: Character, Wielder<Axe>, Wielder<Shield>, Wielder<Helmet>
     {
-        public Dwarf(string name)
-        {
-            this.Name = name;
-        }
+        public Dwarf(string name): base(name) {}
 
         public override Item[] Items { get => new Item[] { this.Axe, this.Shield, this.Helmet }; }
 
