@@ -8,14 +8,18 @@ namespace RoleplayGame
     /// </summary>
     public abstract class Character
     {
+        /// <summary>
+        /// The list of items the character possesses.
+        /// Its main purpose is to facilitate calculation of the total attack and defense values.
+        /// </summary>
         public abstract Item[] Items { get; }
-
-        private int _health { get; set; }
 
         /// <summary>
         /// The character's name.
         /// </summary>
-        public string Name { get; set; }
+        public string Name;
+
+        private int _health;
 
         /// <summary>
         /// The character's health.
@@ -37,7 +41,7 @@ namespace RoleplayGame
         public int DefenseValue { get => Items.Aggregate(0, (total, el) => total + el.DefenseValue); }
 
         /// <summary>
-        /// Receives an attack from a concrete oponent.
+        /// Receives an attack from an oponent.
         /// </summary>
         /// <param name="power">The strength of the received attack.</param>
         public void ReceiveAttack(int power)
@@ -47,11 +51,12 @@ namespace RoleplayGame
         }
 
         /// <summary>
-        /// Cures the character (or rather, sets its health to 100, reducing it if it was higher than that).
+        /// Cures the character.
         /// </summary>
         public void Cure()
         {
-            this.Health = 100;
+            if(this.Health < 100)
+                this.Health = 100;
         }
     }
 }

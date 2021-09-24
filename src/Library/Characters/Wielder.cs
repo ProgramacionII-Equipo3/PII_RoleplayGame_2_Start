@@ -4,7 +4,7 @@ using System.Linq;
 namespace RoleplayGame
 {
     /// <summary>
-    /// This interface represents a character who can wield a concrete type of weapon.
+    /// This interface represents a character who can wield a concrete type of item.
     /// </summary>
     /// <typeparam name="I">The type of the item which can be wielded.</typeparam>
     public interface Wielder<I> where I: Item
