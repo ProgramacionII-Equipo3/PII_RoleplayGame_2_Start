@@ -1,21 +1,9 @@
 namespace RoleplayGame
 {
-    public class Staff
+    public class Staff: Item
     {
-        public int AttackValue 
-        {
-            get
-            {
-                return 100;
-            } 
-        }
+        public override int AttackValue { get => 100; }
 
-        public int DefenseValue
-        {
-            get
-            {
-                return 100;
-            }
-        }
+        public override int DefenseValue { get => 100; }
     }
 }

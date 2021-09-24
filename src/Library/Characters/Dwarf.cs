@@ -1,61 +1,22 @@
 namespace RoleplayGame
 {
-    public class Dwarf
+    public class Dwarf: Character, Wielder<Axe>, Wielder<Shield>, Wielder<Helmet>
     {
-        private int health = 100;
-
         public Dwarf(string name)
         {
             this.Name = name;
         }
 
-        public string Name { get; set; }
+        public override Item[] Items { get => new Item[] { this.Axe, this.Shield, this.Helmet }; }
 
-        public Axe Axe { get; set; }
+        Axe Wielder<Axe>.Item { get; set; }
+        public Axe Axe { get => (this as Wielder<Axe>).Item; set => (this as Wielder<Axe>).Item = value; }
 
-        public Shield Shield { get; set; }
+        Shield Wielder<Shield>.Item { get; set; }
+        public Shield Shield { get => (this as Wielder<Shield>).Item; set => (this as Wielder<Shield>).Item = value; }
 
-        public Helmet Helmet { get; set; }
+        Helmet Wielder<Helmet>.Item { get; set; }
+        public Helmet Helmet { get => (this as Wielder<Helmet>).Item; set => (this as Wielder<Helmet>).Item = value; }
 
-        public int AttackValue
-        {
-            get
-            {
-                return Axe.AttackValue;
-            }
-        }
-
-        public int DefenseValue
-        {
-            get
-            {
-                return Shield.DefenseValue + Helmet.DefenseValue;
-            }
-        }
-
-        public int Health
-        {
-            get
-            {
-                return this.health;
-            }
-            private set
-            {
-                this.health = value < 0 ? 0 : value;
-            }
-        }
-
-        public void ReceiveAttack(int power)
-        {
-            if (this.DefenseValue < power)
-            {
-                this.Health -= power - this.DefenseValue;
-            }
-        }
-
-        public void Cure()
-        {
-            this.Health = 100;
-        }
     }
 }

@@ -1,6 +1,6 @@
 namespace RoleplayGame
 {
-    public class Wizard
+    public class Wizard: Character, Wielder<SpellsBook>, Wielder<Staff>
     {
         private int health = 100;
 
@@ -9,51 +9,12 @@ namespace RoleplayGame
             this.Name = name;
         }
 
-        public string Name { get; set; }
+        public override Item[] Items { get => new Item[] { this.SpellsBook, this.Staff }; }
 
-        public SpellsBook SpellsBook { get; set; }
+        SpellsBook Wielder<SpellsBook>.Item { get; set; }
+        public SpellsBook SpellsBook { get => (this as Wielder<SpellsBook>).Item; set => (this as Wielder<SpellsBook>).Item = value; }
 
-        public Staff Staff { get; set; }
-
-        public int AttackValue
-        {
-            get
-            {
-                return SpellsBook.AttackValue + Staff.AttackValue;
-            }
-        }
-
-        public int DefenseValue
-        {
-            get
-            {
-                return SpellsBook.DefenseValue + Staff.DefenseValue;
-            }
-        }
-
-        public int Health
-        {
-            get
-            {
-                return this.health;
-            }
-            private set
-            {
-                this.health = value < 0 ? 0 : value;
-            }
-        }
-
-        public void ReceiveAttack(int power)
-        {
-            if (this.DefenseValue < power)
-            {
-                this.Health -= power - this.DefenseValue;
-            }
-        }
-
-        public void Cure()
-        {
-            this.Health = 100;
-        }
+        Staff Wielder<Staff>.Item { get; set; }
+        public Staff Staff { get => (this as Wielder<Staff>).Item; set => (this as Wielder<Staff>).Item = value; }
     }
 }

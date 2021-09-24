@@ -1,59 +1,16 @@
 namespace RoleplayGame
 {
-    public class Archer
+    public class Archer: Character, Wielder<Bow>, Wielder<Helmet>
     {
-        private int health = 100;
-
         public Archer(string name)
         {
             this.Name = name;
         }
 
-        public string Name { get; set; }
-        
-        public Bow Bow { get; set; }
-
-        public Helmet Helmet { get; set; }
-
-        public int AttackValue
-        {
-            get
-            {
-                return Bow.AttackValue;
-            }
-        }
-
-        public int DefenseValue
-        {
-            get
-            {
-                return Helmet.DefenseValue;
-            }
-        }
-
-        public int Health
-        {
-            get
-            {
-                return this.health;
-            }
-            private set
-            {
-                this.health = value < 0 ? 0 : value;
-            }
-        }
-
-        public void ReceiveAttack(int power)
-        {
-            if (this.DefenseValue < power)
-            {
-                this.Health -= power - this.DefenseValue;
-            }
-        }
-
-        public void Cure()
-        {
-            this.Health = 100;
-        }
+        public override Item[] Items { get => new Item[] { this.Bow, this.Helmet }; }
+        Bow Wielder<Bow>.Item { get; set; }
+        public Bow Bow { get => (this as Wielder<Bow>).Item; set => (this as Wielder<Bow>).Item = value; }
+        Helmet Wielder<Helmet>.Item { get; set; }
+        public Helmet Helmet { get => (this as Wielder<Helmet>).Item; set => (this as Wielder<Helmet>).Item = value; }
     }
 }

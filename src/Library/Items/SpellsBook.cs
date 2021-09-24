@@ -1,35 +1,14 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace RoleplayGame
 {
-    public class SpellsBook
+    public class SpellsBook: Item
     {
         public Spell[] Spells { get; set; }
         
-        public int AttackValue
-        {
-            get
-            {
-                int value = 0;
-                foreach (Spell spell in this.Spells)
-                {
-                    value += spell.AttackValue;
-                }
-                return value;
-            }
-        }
+        public override int AttackValue { get => Spells.Aggregate(0, (total, el) => total + el.AttackValue); }
 
-        public int DefenseValue
-        {
-            get
-            {
-                int value = 0;
-                foreach (Spell spell in this.Spells)
-                {
-                    value += spell.DefenseValue;
-                }
-                return value;
-            }
-        }
+        public override int DefenseValue { get => Spells.Aggregate(0, (total, el) => total + el.DefenseValue); }
     }
 }
