@@ -25,7 +25,7 @@ namespace Test.Library
             dwarf.Helmet = new Helmet();
 
             int dwarfExpected = 0;
-            int wizardExpected = 75;
+            int wizardExpected = 100;
             dwarf.ReceiveAttack(wizard.AttackValue);
             wizard.ReceiveAttack(dwarf.AttackValue);
            
