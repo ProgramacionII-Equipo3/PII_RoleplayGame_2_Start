@@ -3,4 +3,4 @@
 .vscode/
 
 # The coverage file
-src/test/Test.Library/lcov.info
+src/test/Test.Library/info.lcov
