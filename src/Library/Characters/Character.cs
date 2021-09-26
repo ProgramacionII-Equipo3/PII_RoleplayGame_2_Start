@@ -53,6 +53,8 @@ namespace RoleplayGame
         {
             if (this.DefenseValue < power)
                 this.Health -= power - this.DefenseValue;
+            else 
+                this.Health -= power;
         }
 
         /// <summary>
